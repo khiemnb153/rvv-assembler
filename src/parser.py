@@ -86,9 +86,9 @@ def parse_data(data_section):
 def syntax_2_regex(syntax: str, dynamic_params):
     syntax = syntax.replace('.', r'\.')
     if 'formats' in dynamic_params:
-        syntax = syntax.replace('<format>', f'(?P<format>{'|'.join(format.replace('.', r'\.') for format in dynamic_params['formats'])})')
+        syntax = syntax.replace('<format>', f"(?P<format>{'|'.join(format.replace('.', r'\.') for format in dynamic_params['formats'])})")
     if 'widths' in dynamic_params:
-        syntax = syntax.replace('<width>', f'(?P<width>{'|'.join([str(width) for width in dynamic_params['widths']])})')
+        syntax = syntax.replace('<width>', f"(?P<width>{'|'.join([str(width) for width in dynamic_params['widths']])})")
     syntax = syntax.replace(' <vd>', r'\s+v(?P<vd>\d+)')
     syntax = syntax.replace(' <rd>', r'\s+x(?P<rd>\d+)')
     syntax = syntax.replace(' <vs3>', r'\s+v(?P<vs3>\d+)')
